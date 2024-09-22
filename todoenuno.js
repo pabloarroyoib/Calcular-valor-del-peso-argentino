@@ -74,22 +74,34 @@ function populateSelect(select, options, defaultValue) {
 
 // Calcular la inflación acumulada para un período
 function getInflationForPeriod(startDate, endDate) {
+    console.log('Datos de inflación disponibles:', inflationData);
+    console.log('Calculando inflación desde', startDate, 'hasta', endDate);
     let accumulatedInflation = 1;
-    let monthCount = 0;
+    let months = 0;
 
-    while (startDate <= endDate) {
-        const yearMonth = startDate.getFullYear() + '-' + (startDate.getMonth() + 1);
-        const inflation = inflationMap[yearMonth];
-
-        if (inflation !== undefined) {
-            accumulatedInflation *= (1 + inflation / 100);
-            monthCount++;
+    for (let d = new Date(startDate); d < endDate; d.setMonth(d.getMonth() + 1)) {
+        const year = d.getFullYear();
+        const month = d.getMonth() + 1;
+        console.log('Buscando datos para', year, month);
+        const monthData = inflationData.find(data => data.year === year && data.month === month);
+        
+        if (monthData) {
+            accumulatedInflation *= (1 + monthData.inflation / 100);
+            months++;
+            console.log(`Inflación para ${year}-${month}: ${monthData.inflation}%`);
+        } else {
+            console.log(`No se encontraron datos para ${year}-${month}`);
         }
-
-        startDate.setMonth(startDate.getMonth() + 1);
     }
 
-    return { accumulatedInflation, monthCount };
+    const totalInflation = (accumulatedInflation - 1) * 100;
+    console.log('Inflación acumulada total:', totalInflation);
+
+    return {
+        accumulatedInflation: totalInflation,
+        averageMonthlyInflation: months > 0 ? (Math.pow(accumulatedInflation, 1/months) - 1) * 100 : 0,
+        averageYearlyInflation: months > 0 ? (Math.pow(accumulatedInflation, 12/months) - 1) * 100 : 0
+    };
 }
 
 // Calcular la inflación y actualizar la UI
@@ -108,16 +120,13 @@ function calculateInflation() {
         return;
     }
 
-    const inflationResult = getInflationForPeriod(new Date(startDate), new Date(endDate.setMonth(endDate.getMonth() - 1)));
-    const endAmount = startAmount * inflationResult.accumulatedInflation;
-    const totalInflation = (inflationResult.accumulatedInflation - 1) * 100;
-    const averageMonthlyInflation = inflationResult.monthCount > 0 ? Math.pow(inflationResult.accumulatedInflation, 1 / inflationResult.monthCount) - 1 : 0;
-    const averageYearlyInflation = Math.pow(1 + averageMonthlyInflation, 12) - 1;
+    const inflationResult = getInflationForPeriod(startDate, endDate);
+    const endAmount = startAmount * (1 + inflationResult.accumulatedInflation / 100);
 
     document.getElementById('endAmount').value = endAmount.toFixed(2);
-    document.getElementById('accumulatedInflation').textContent = totalInflation.toFixed(2) + '%';
-    document.getElementById('averageMonthlyInflation').textContent = (averageMonthlyInflation * 100).toFixed(2) + '%';
-    document.getElementById('averageYearlyInflation').textContent = (averageYearlyInflation * 100).toFixed(2) + '%';
+    document.getElementById('accumulatedInflation').textContent = inflationResult.accumulatedInflation.toFixed(2) + '%';
+    document.getElementById('averageMonthlyInflation').textContent = inflationResult.averageMonthlyInflation.toFixed(2) + '%';
+    document.getElementById('averageYearlyInflation').textContent = inflationResult.averageYearlyInflation.toFixed(2) + '%';
 }
 
 // Mostrar errores en la UI
@@ -132,31 +141,48 @@ function displayError(message) {
 function compareValues() {
     const amount1 = parseFloat(document.getElementById('amount1').value) || 0;
     const year1 = parseInt(document.getElementById('year1').value);
-    const month1 = parseInt(document.getElementById('month1').value);
+    const month1 = document.getElementById('month1').value;
     const amount2 = parseFloat(document.getElementById('amount2').value) || 0;
     const year2 = parseInt(document.getElementById('year2').value);
-    const month2 = parseInt(document.getElementById('month2').value);
+    const month2 = document.getElementById('month2').value;
 
-    const date1 = new Date(year1, month1 - 1);
-    const date2 = new Date(year2, month2 - 1);
+    console.log('Valores del formulario:', { amount1, year1, month1, amount2, year2, month2 });
+
+    const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const monthIndex1 = monthNames.indexOf(month1.toLowerCase());
+    const monthIndex2 = monthNames.indexOf(month2.toLowerCase());
+
+    const date1 = new Date(year1, monthIndex1, 1);
+    const date2 = new Date(year2, monthIndex2, 1);
+
+    console.log('Fecha 1:', date1);
+    console.log('Fecha 2:', date2);
 
     if (date1 > date2) {
         displayCompareError('La primera fecha debe ser anterior o igual a la segunda fecha');
         return;
     }
 
-    const inflationResult = getInflationForPeriod(new Date(date1), new Date(date2.setMonth(date2.getMonth() - 1)));
-    const adjustedAmount1 = amount1 * inflationResult.accumulatedInflation;
+    const inflationResult = getInflationForPeriod(date1, date2);
+    console.log('Resultado de inflación:', inflationResult);
+
+    const adjustedAmount1 = amount1 * (1 + inflationResult.accumulatedInflation / 100);
+    console.log('Monto 1 original:', amount1);
+    console.log('Monto 1 ajustado:', adjustedAmount1);
+
     const difference = adjustedAmount1 - amount2;
     const percentageDifference = ((difference / amount2) * 100).toFixed(2);
 
+    console.log('Diferencia:', difference);
+    console.log('Diferencia porcentual:', percentageDifference);
+
     let resultText;
-    if (difference > 0) {
-        resultText = `El primer valor ajustado (${adjustedAmount1.toFixed(2)}) es ${Math.abs(difference).toFixed(2)} mayor que el segundo valor (${amount2.toFixed(2)}). Diferencia porcentual: +${percentageDifference}%`;
-    } else if (difference < 0) {
-        resultText = `El primer valor ajustado (${adjustedAmount1.toFixed(2)}) es ${Math.abs(difference).toFixed(2)} menor que el segundo valor (${amount2.toFixed(2)}). Diferencia porcentual: ${percentageDifference}%`;
-    } else {
+    if (Math.abs(difference) < 0.01) {
         resultText = `Los valores son iguales en términos reales.`;
+    } else if (difference > 0) {
+        resultText = `El primer valor ajustado por inflación ($${adjustedAmount1.toFixed(2)}) es $${Math.abs(difference).toFixed(2)} mayor que el segundo valor ($${amount2.toFixed(2)}). Diferencia porcentual: +${percentageDifference}%`;
+    } else {
+        resultText = `El primer valor ajustado por inflación ($${adjustedAmount1.toFixed(2)}) es $${Math.abs(difference).toFixed(2)} menor que el segundo valor ($${amount2.toFixed(2)}). Diferencia porcentual: ${percentageDifference}%`;
     }
 
     document.getElementById('compareResults').textContent = resultText;
