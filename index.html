@@ -282,6 +282,61 @@
         </section>
 
         <section class="container__section">
+            <h2 class="section__title title--principal">Evolución del peso con respecto al tipo de cambio oficial</h2>
+            <p class="section__description">
+                Esta herramienta te permite visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar oficial a lo largo del tiempo.
+            </p>
+            <h2 class="section__title">Uso</h2>
+            <ol class="section__list">
+                <li>Ingresa un monto en pesos argentinos.</li>
+                <li>Ingresar fecha inicial. El cálculo del mes inicial es al primer día de ese mes.</li>
+                <li>Ingresar fecha final. El cálculo del mes final es al último día de ese mes.</li>
+            </ol>
+            <form class="section__form">
+                <div class="form__line">
+                    <div class="form__group">
+                        <span class="form__addon">ARS</span>
+                        <input type="number" id="pesoAmountOfficial" class="form__input" step="0.01" min="0">
+                    </div>
+                </div>
+                <div class="form__line">
+                    <div class="form__group">
+                        <span class="form__addon">Fecha inicial:</span>
+                        <select id="dollarStartMonthOfficial" class="form__select">
+                            <!-- Opciones de meses -->
+                        </select>
+                        <select id="dollarStartYearOfficial" class="form__select">
+                            <!-- Opciones de años -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form__line">
+                    <div class="form__group">
+                        <span class="form__addon">Fecha final:</span>
+                        <select id="dollarEndMonthOfficial" class="form__select">
+                            <!-- Opciones de meses -->
+                        </select>
+                        <select id="dollarEndYearOfficial" class="form__select">
+                            <!-- Opciones de años -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form__line">
+                    <span class="form__addon">Equivalencia en USD de fecha inicial:</span>
+                    <span id="startUsdEquivalentOfficial" class="form__results"></span>
+                </div>
+                <div class="form__line">
+                    <span class="form__addon">Equivalencia en USD de fecha final:</span>
+                    <span id="endUsdEquivalentOfficial" class="form__results"></span>
+                </div>
+                <div class="form__line">
+                    <span class="form__addon">Variación porcentual:</span>
+                    <span id="exchangeVariationOfficial" class="form__results"></span>
+                </div>
+            </form>
+        </section>
+
+        <section class="container__section">
             <h2 class="section__title">¿Qué es la Inflación?</h2>
             <p class="section__description">
                 La inflación es el aumento generalizado y sostenido de los precios durante un determinado período de tiempo. Cuando los precios suben, la moneda en curso pierde valor y se adquieren menos bienes y servicios. Esto quiere decir que la inflación refleja la disminución del poder adquisitivo de la moneda.
@@ -301,5 +356,6 @@
     </footer>
     <script src="todoenuno.js" defer></script>
     <script src="dolarblue-calculator.js" defer></script>
+    <script src="dolaroficial-calculator.js" defer></script>
 </body>
 </html>
