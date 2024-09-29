@@ -10,17 +10,22 @@
 <body>
     <header class="header">
         <nav class="navbar">
-            <ul>
-                <li class="navbar__item"><a href="#" class="navbar__link">Inicio</a></li>
-                <li class="navbar__item"><a href="#" class="navbar__link">Indicadores</a></li>
-                <li class="navbar__item"><a href="#" class="navbar__link">Acerca de</a></li>
-                <li class="navbar__item"><a href="#" class="navbar__link">Contacto</a></li>
+            <div class="navbar__logo">Calculadora de Inflación</div>
+            <button class="navbar__toggle" aria-label="Abrir menú">
+                <span class="navbar__toggle-icon"></span>
+            </button>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a href="#calculadora-inflacion" class="navbar__link">Calculadora de Inflación</a></li>
+                <li class="navbar__item"><a href="#comparar-precios" class="navbar__link">Comparar Precios</a></li>
+                <li class="navbar__item"><a href="#evolucion-peso-paralelo" class="navbar__link">Evolución Peso (Paralelo)</a></li>
+                <li class="navbar__item"><a href="#evolucion-peso-oficial" class="navbar__link">Evolución Peso (Oficial)</a></li>
+                <li class="navbar__item"><a href="#que-es-inflacion" class="navbar__link">¿Qué es la Inflación?</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
-        <section class="container__section">
+        <section id="calculadora-inflacion" class="container__section">
             <h1 class="section__title title--principal">Calculadora de inflación histórica de Argentina</h1>
             <p class="section__description">
                 Los precios históricos pueden ser ajustados a los precios actuales utilizando datos de índices de inflación históricos. Utiliza la calculadora a continuación para convertir precios entre cualquier mes desde enero de 1992 (cuando fue introducido el Peso) y el mes presente.
@@ -86,7 +91,7 @@
             </form>
         </section>
 
-        <section class="container__section">
+        <section id="comparar-precios" class="container__section">
             <h2 class="section__title title--principal">Comparar 2 precios ajustados por inflación</h2>
             <p class="section__description">
                 Es crucial saber si un producto o servicio aumenta más o menos que la inflación. Cuando el aumento supera la inflación, el poder adquisitivo disminuye; si es menor, aumenta. Esto nos ayuda a entender cómo los cambios en los precios impactan nuestra capacidad de compra y a tomar decisiones financieras más informadas.
@@ -229,7 +234,7 @@
             </form>
         </section>
 
-        <section class="container__section">
+        <section id="evolucion-peso-paralelo" class="container__section">
             <h2 class="section__title title--principal">Evolución del peso con respecto al tipo de cambio paralelo</h2>
             <p class="section__description">
                 Esta herramienta te permite visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar paralelo (también conocido como dólar blue) a lo largo del tiempo.
@@ -281,7 +286,7 @@
             </form>
         </section>
 
-        <section class="container__section">
+        <section id="evolucion-peso-oficial" class="container__section">
             <h2 class="section__title title--principal">Evolución del peso con respecto al tipo de cambio oficial</h2>
             <p class="section__description">
                 Esta herramienta te permite visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar oficial a lo largo del tiempo.
@@ -336,7 +341,7 @@
             </form>
         </section>
 
-        <section class="container__section">
+        <section id="que-es-inflacion" class="container__section">
             <h2 class="section__title">¿Qué es la Inflación?</h2>
             <p class="section__description">
                 La inflación es el aumento generalizado y sostenido de los precios durante un determinado período de tiempo. Cuando los precios suben, la moneda en curso pierde valor y se adquieren menos bienes y servicios. Esto quiere decir que la inflación refleja la disminución del poder adquisitivo de la moneda.
@@ -354,6 +359,7 @@
     <footer class="footer">
         <p>© 2024 Indicadores Económicos. Todos los derechos reservados.</p>
     </footer>
+    <script src="menu.js" defer></script>
     <script src="todoenuno.js" defer></script>
     <script src="dolarblue-calculator.js" defer></script>
     <script src="dolaroficial-calculator.js" defer></script>
