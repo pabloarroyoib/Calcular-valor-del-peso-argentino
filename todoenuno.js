@@ -139,14 +139,21 @@ function displayError(message) {
 
 // Nueva función para comparar valores ajustados por inflación
 function compareValues() {
-    const amount1 = parseFloat(document.getElementById('amount1').value) || 0;
+    const amount1 = parseFloat(document.getElementById('amount1').value);
     const year1 = parseInt(document.getElementById('year1').value);
     const month1 = document.getElementById('month1').value;
-    const amount2 = parseFloat(document.getElementById('amount2').value) || 0;
+    const amount2 = parseFloat(document.getElementById('amount2').value);
     const year2 = parseInt(document.getElementById('year2').value);
     const month2 = document.getElementById('month2').value;
 
-    console.log('Valores del formulario:', { amount1, year1, month1, amount2, year2, month2 });
+    // Limpiar los resultados anteriores
+    document.getElementById('adjustedAmount').textContent = '';
+    document.getElementById('percentageDifference').textContent = '';
+
+    // Verificar si todos los campos tienen valores
+    if (isNaN(amount1) || isNaN(amount2) || !year1 || !year2 || !month1 || !month2) {
+        return; // No hacer nada si falta algún valor
+    }
 
     const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
     const monthIndex1 = monthNames.indexOf(month1.toLowerCase());
@@ -155,41 +162,23 @@ function compareValues() {
     const date1 = new Date(year1, monthIndex1, 1);
     const date2 = new Date(year2, monthIndex2, 1);
 
-    console.log('Fecha 1:', date1);
-    console.log('Fecha 2:', date2);
-
     if (date1 > date2) {
         displayCompareError('La primera fecha debe ser anterior o igual a la segunda fecha');
         return;
     }
 
     const inflationResult = getInflationForPeriod(date1, date2);
-    console.log('Resultado de inflación:', inflationResult);
-
     const adjustedAmount1 = amount1 * (1 + inflationResult.accumulatedInflation / 100);
-    console.log('Monto 1 original:', amount1);
-    console.log('Monto 1 ajustado:', adjustedAmount1);
-
     const difference = adjustedAmount1 - amount2;
     const percentageDifference = ((difference / amount2) * 100).toFixed(2);
 
-    console.log('Diferencia:', difference);
-    console.log('Diferencia porcentual:', percentageDifference);
-
-    let resultText;
-    if (Math.abs(difference) < 0.01) {
-        resultText = `Los valores son iguales en términos reales.`;
-    } else if (difference > 0) {
-        resultText = `El primer valor ajustado por inflación ($${adjustedAmount1.toFixed(2)}) es $${Math.abs(difference).toFixed(2)} mayor que el segundo valor ($${amount2.toFixed(2)}). Diferencia porcentual: +${percentageDifference}%`;
-    } else {
-        resultText = `El primer valor ajustado por inflación ($${adjustedAmount1.toFixed(2)}) es $${Math.abs(difference).toFixed(2)} menor que el segundo valor ($${amount2.toFixed(2)}). Diferencia porcentual: ${percentageDifference}%`;
-    }
-
-    document.getElementById('compareResults').textContent = resultText;
+    document.getElementById('adjustedAmount').textContent = `$${adjustedAmount1.toFixed(2)}`;
+    document.getElementById('percentageDifference').textContent = `${percentageDifference}%`;
 }
 
 function displayCompareError(message) {
-    document.getElementById('compareResults').textContent = message;
+    document.getElementById('adjustedAmount').textContent = message;
+    document.getElementById('percentageDifference').textContent = '';
 }
 
 // Listeners para actualizar la inflación
@@ -207,9 +196,12 @@ document.getElementById('amount2').addEventListener('input', compareValues);
 document.getElementById('year2').addEventListener('change', compareValues);
 document.getElementById('month2').addEventListener('change', compareValues);
 
-// Calcular inflación y comparar valores cuando se carga la página
+// Cargar datos y realizar cálculos iniciales
 window.addEventListener('load', () => {
     console.log('Página cargada. Iniciando cálculos iniciales...');
     calculateInflation();
     compareValues();
+    loadDollarData().then(() => {
+        calculatePesoDollarEvolution();
+    });
 });
