@@ -40,10 +40,15 @@ function populateDateSelectorsOfficial() {
         { value: 10, text: "Octubre" }, { value: 11, text: "Noviembre" }, { value: 12, text: "Diciembre" }
     ];
 
-    populateSelect(document.getElementById('dollarStartYearOfficial'), years.map(year => ({ value: year, text: year })), years[years.length - 1]);
-    populateSelect(document.getElementById('dollarEndYearOfficial'), years.map(year => ({ value: year, text: year })), years[years.length - 1]);
+    // Obtener la última fecha disponible
+    const lastEntry = dollarOfficialData[dollarOfficialData.length - 1];
+    const lastYear = lastEntry.year;
+    const lastMonth = lastEntry.month;
+
+    populateSelect(document.getElementById('dollarStartYearOfficial'), years.map(year => ({ value: year, text: year })), years[0]);
+    populateSelect(document.getElementById('dollarEndYearOfficial'), years.map(year => ({ value: year, text: year })), lastYear);
     populateSelect(document.getElementById('dollarStartMonthOfficial'), months, 1);
-    populateSelect(document.getElementById('dollarEndMonthOfficial'), months, months[months.length - 1].value);
+    populateSelect(document.getElementById('dollarEndMonthOfficial'), months, lastMonth);
 }
 
 // Función para poblar un selector (asumiendo que esta función ya existe en el archivo principal)
@@ -68,8 +73,8 @@ function calculatePesoDollarOfficialEvolution() {
     const endYear = parseInt(document.getElementById('dollarEndYearOfficial').value);
     const endMonth = parseInt(document.getElementById('dollarEndMonthOfficial').value);
 
+    // Si algún campo está vacío, simplemente retorna sin hacer cálculos ni mostrar errores
     if (isNaN(pesoAmount) || !startYear || !startMonth || !endYear || !endMonth) {
-        displayDollarOfficialError('Por favor, complete todos los campos.');
         return;
     }
 
@@ -102,7 +107,7 @@ function calculatePesoDollarOfficialEvolution() {
 function displayDollarOfficialError(message) {
     document.getElementById('startUsdEquivalentOfficial').textContent = '';
     document.getElementById('endUsdEquivalentOfficial').textContent = '';
-    document.getElementById('exchangeVariationOfficial').textContent = message;
+    document.getElementById('exchangeVariationOfficial').textContent = message || '';
 }
 
 // Event listeners para la sección del dólar oficial

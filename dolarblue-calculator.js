@@ -40,10 +40,15 @@ function populateDateSelectors() {
         { value: 10, text: "Octubre" }, { value: 11, text: "Noviembre" }, { value: 12, text: "Diciembre" }
     ];
 
-    populateSelect(document.getElementById('dollarStartYear'), years.map(year => ({ value: year, text: year })), years[years.length - 1]);
-    populateSelect(document.getElementById('dollarEndYear'), years.map(year => ({ value: year, text: year })), years[years.length - 1]);
+    // Obtener la última fecha disponible
+    const lastEntry = dollarData[dollarData.length - 1];
+    const lastYear = lastEntry.year;
+    const lastMonth = lastEntry.month;
+
+    populateSelect(document.getElementById('dollarStartYear'), years.map(year => ({ value: year, text: year })), years[0]);
+    populateSelect(document.getElementById('dollarEndYear'), years.map(year => ({ value: year, text: year })), lastYear);
     populateSelect(document.getElementById('dollarStartMonth'), months, 1);
-    populateSelect(document.getElementById('dollarEndMonth'), months, months[months.length - 1].value);
+    populateSelect(document.getElementById('dollarEndMonth'), months, lastMonth);
 }
 
 // Función para poblar un selector
@@ -68,8 +73,8 @@ function calculatePesoDollarEvolution() {
     const endYear = parseInt(document.getElementById('dollarEndYear').value);
     const endMonth = parseInt(document.getElementById('dollarEndMonth').value);
 
+    // Si algún campo está vacío, simplemente retorna sin hacer cálculos ni mostrar errores
     if (isNaN(pesoAmount) || !startYear || !startMonth || !endYear || !endMonth) {
-        displayDollarError('Por favor, complete todos los campos.');
         return;
     }
 
