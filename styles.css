@@ -21,7 +21,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0; /* Cambiado para quitar el padding horizontal en móviles */
+    padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -72,10 +72,11 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    gap: 2rem; /* Añade espacio entre los elementos del menú */
 }
 
 .navbar__item {
-    margin-right: 0; /* Eliminado el margen derecho */
+    margin: 0; /* Elimina el margen si lo había */
     margin-bottom: 0.5rem; /* Añadido margen inferior para separar los elementos */
 }
 
@@ -215,6 +216,7 @@ a:hover {
 @media (min-width: 768px) {
     .navbar__menu {
         flex-direction: row; /* Volver a la disposición horizontal en tablets y escritorios */
+        gap: 3rem; /* Aumenta el espacio en pantallas más grandes */
     }
 
     .navbar__item {
