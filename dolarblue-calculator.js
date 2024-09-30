@@ -75,7 +75,7 @@ function calculatePesoDollarEvolution() {
 
     // Verificar si el valor ingresado es 0 o negativo
     if (pesoAmount <= 0) {
-        displayDollarError('El valor ingresado debe ser mayor que 0');
+        displayDollarError('El valor ingresado debe ser mayor que 0.');
         return;
     }
 

@@ -140,15 +140,9 @@ function calculateInflation() {
         return; // No hacer nada si no hay un monto inicial
     }
 
-    // Verificar si el monto inicial es negativo
-    if (startAmount < 0) {
-        displayError('No se pueden ingresar números negativos en la calculadora.');
-        return;
-    }
-
-    // Verificar si el monto inicial es cero
-    if (startAmount === 0) {
-        displayError('El monto inicial debe ser mayor que cero.');
+    // Verificar si el monto inicial es 0 o negativo
+    if (startAmount <= 0) {
+        displayError('El valor ingresado debe ser mayor que 0.');
         return;
     }
 
