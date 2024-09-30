@@ -73,6 +73,12 @@ function calculatePesoDollarEvolution() {
     const endYear = parseInt(document.getElementById('dollarEndYear').value);
     const endMonth = parseInt(document.getElementById('dollarEndMonth').value);
 
+    // Verificar si el valor ingresado es 0 o negativo
+    if (pesoAmount <= 0) {
+        displayDollarError('El valor ingresado debe ser mayor que 0');
+        return;
+    }
+
     // Si algún campo está vacío, simplemente retorna sin hacer cálculos ni mostrar errores
     if (isNaN(pesoAmount) || !startYear || !startMonth || !endYear || !endMonth) {
         return;
