@@ -32,7 +32,7 @@ function createDollarMap(data) {
 
 // Poblar los selectores de fecha para la sección del dólar
 function populateDateSelectors() {
-    const years = [...new Set(dollarData.map(entry => entry.year))].sort((a, b) => a - b);
+    const years = [...new Set(dollarData.map(entry => entry.year))].sort((a, b) => b - a);
     const months = [
         { value: 1, text: "Enero" }, { value: 2, text: "Febrero" }, { value: 3, text: "Marzo" },
         { value: 4, text: "Abril" }, { value: 5, text: "Mayo" }, { value: 6, text: "Junio" },
@@ -45,7 +45,7 @@ function populateDateSelectors() {
     const lastYear = lastEntry.year;
     const lastMonth = lastEntry.month;
 
-    populateSelect(document.getElementById('dollarStartYear'), years.map(year => ({ value: year, text: year })), years[0]);
+    populateSelect(document.getElementById('dollarStartYear'), years.map(year => ({ value: year, text: year })), years[years.length - 1]);
     populateSelect(document.getElementById('dollarEndYear'), years.map(year => ({ value: year, text: year })), lastYear);
     populateSelect(document.getElementById('dollarStartMonth'), months, 1);
     populateSelect(document.getElementById('dollarEndMonth'), months, lastMonth);
