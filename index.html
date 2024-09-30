@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de inflación histórica de Argentina</title>
+    <title>Calcular valor del peso argentino</title>
     <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
     <header class="header">
         <nav class="navbar">
-            <div class="navbar__logo">Calculadora de Inflación</div>
+            <div class="navbar__logo">Calcular valor del peso argentino</div>
             <button class="navbar__toggle" aria-label="Abrir menú">
                 <span class="navbar__toggle-icon"></span>
             </button>
@@ -28,13 +28,14 @@
         <section id="calculadora-inflacion" class="container__section">
             <h1 class="section__title title--principal">Calculadora de inflación histórica de Argentina</h1>
             <p class="section__description">
-                Los precios históricos pueden ser ajustados a los precios actuales utilizando datos de índices de inflación históricos. Utiliza la calculadora a continuación para convertir precios entre cualquier mes desde enero de 1992 (cuando fue introducido el Peso) y el mes presente.
+                La inflación afecta el valor del dinero a lo largo del tiempo, distorsionando los precios . 
+                Utiliza la calculadora a continuación para convertir precios entre cualquier mes desde enero de 1992 (cuando fue introducido el Peso) y el mes presente.
             </p>
             <h2 class="section__title">Uso</h2>
             <ol class="section__list">
                 <li>Ingresar un valor inicial.</li>
-                <li>Ingresar fecha inicial. El cálculo del mes inicial es al primer día de ese mes.</li>
-                <li>Ingresar fecha final. El cálculo del mes final es al último día de ese mes.</li>
+                <li>Ingresar fecha inicial (la inflación se toma al primer día del mes).</li>
+                <li>Ingresar fecha final (la inflación se toma al primer día del mes).</li>
             </ol>
             <form class="section__form">
                 <div class="form__line">
@@ -94,12 +95,15 @@
         <section id="comparar-precios" class="container__section">
             <h2 class="section__title title--principal">Comparar 2 precios ajustados por inflación</h2>
             <p class="section__description">
-                Es crucial saber si un producto o servicio aumenta más o menos que la inflación. Cuando el aumento supera la inflación, el poder adquisitivo disminuye; si es menor, aumenta. Esto nos ayuda a entender cómo los cambios en los precios impactan nuestra capacidad de compra y a tomar decisiones financieras más informadas.
+                Es importante saber si un precio aumenta más o menos que la inflación. Cuando el aumento supera la inflación, el poder adquisitivo disminuye; si es menor, aumenta.
+                Utiliza la herramienta a continuación para saber la diferencia en términos reales (ajustada por inflación) entre 2 valores de distintas fechas.
             </p>
             <h2 class="section__title">Uso</h2>
             <ol class="section__list">
-                <li>Ingresar el primer valor a comparar y la fecha a la que pertenece. El cálculo del mes inicial es al primer día de ese mes.</li>
-                <li>Ingresar el segundo valor a comparar y la fecha a la que pertenece. El cálculo del mes final es al último día de ese mes.</li>
+                <li>Ingresa el primer valor a comparar.</li>
+                <li>ingresa la fecha a la que pertenece el primer valor (la inflación se toma al primer día del mes).</li>
+                <li>Ingresa el segundo valor a comparar.</li>
+                <li>Ingresa la fecha a la que pertenece el segundo valor (la inflación se toma al primer día del mes).</li>
             </ol>
             <form class="section__form">
                 <div class="form__line">
@@ -235,20 +239,20 @@
         </section>
 
         <section id="evolucion-peso-paralelo" class="container__section">
-            <h2 class="section__title title--principal">Evolución del peso con respecto al tipo de cambio paralelo</h2>
-            <p class="section__description">
-                Esta herramienta te permite visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar paralelo (también conocido como dólar blue) a lo largo del tiempo.
+            <h2 class="section__title title--principal">Evolución del peso con respecto al dólar paralelo (blue)</h2>
+            <p class="section__description"> El cambio de cotización del peso frente al dólar afecta la inflación, los precios de productos importados, el poder adquisitivo, las inversiones y el ahorro.
+            Utiliza la herramienta a continuación para visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar paralelo (blue) a lo largo del tiempo.
             </p>
             <h2 class="section__title">Uso</h2>
             <ol class="section__list">
                 <li>Ingresa un monto en pesos argentinos.</li>
-                <li>Ingresar fecha inicial. El cálculo del mes inicial es al primer día de ese mes.</li>
-                <li>Ingresar fecha final. El cálculo del mes final es al último día de ese mes.</li>
+                <li>Ingresar fecha inicial (la cotización del dólar se toma al primer día del mes).</li>
+                <li>Ingresar fecha final (la cotización del dólar se toma al primer día del mes).</li>
             </ol>
             <form class="section__form">
                 <div class="form__line">
                     <div class="form__group">
-                        <span class="form__addon">ARS</span>
+                        <span class="form__addon">$</span>
                         <input type="number" id="pesoAmount" class="form__input" step="0.01" min="0">
                     </div>
                 </div>
@@ -287,20 +291,21 @@
         </section>
 
         <section id="evolucion-peso-oficial" class="container__section">
-            <h2 class="section__title title--principal">Evolución del peso con respecto al tipo de cambio oficial</h2>
+            <h2 class="section__title title--principal">Evolución del peso con respecto al dólar oficial</h2>
             <p class="section__description">
-                Esta herramienta te permite visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar oficial a lo largo del tiempo.
+            El cambio de cotización del peso frente al dólar afecta la inflación, los precios de productos importados, el poder adquisitivo, las inversiones y el ahorro.
+            Utiliza la herramienta a continuación para visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar oficial a lo largo del tiempo.
             </p>
             <h2 class="section__title">Uso</h2>
             <ol class="section__list">
                 <li>Ingresa un monto en pesos argentinos.</li>
-                <li>Ingresar fecha inicial. El cálculo del mes inicial es al primer día de ese mes.</li>
-                <li>Ingresar fecha final. El cálculo del mes final es al último día de ese mes.</li>
+                <li>Ingresar fecha inicial (la cotización del dólar se toma al primer día del mes).</li>
+                <li>Ingresar fecha final (la cotización del dólar se toma al primer día del mes).</li>
             </ol>
             <form class="section__form">
                 <div class="form__line">
                     <div class="form__group">
-                        <span class="form__addon">ARS</span>
+                        <span class="form__addon">$</span>
                         <input type="number" id="pesoAmountOfficial" class="form__input" step="0.01" min="0">
                     </div>
                 </div>
