@@ -225,6 +225,23 @@ a:hover {
 
 /* Media queries para tablets y escritorios */
 @media (min-width: 768px) {
+    .form__line {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .form__input,
+    .form__select {
+        width: auto;
+    }
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 767px) {
+    .navbar__toggle {
+        display: block;
+    }
+
     .navbar__menu {
         position: absolute;
         top: 100%;
@@ -259,34 +276,16 @@ a:hover {
     h3.section__title {
         font-size: 1.25rem;
     }
-
-    .form__line {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .form__input,
-    .form__select {
-        width: auto;
-    }
-}
-
-/* Media query para dispositivos móviles */
-@media (max-width: 767px) {
-    .navbar__toggle {
-        display: block;
-    }
-    
 }
 
 /* Ocultar los botones de incremento/decremento en navegadores Webkit */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Ocultar los botones de incremento/decremento en Firefox */
 input[type="number"] {
--moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
