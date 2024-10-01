@@ -211,11 +211,10 @@ function compareValues() {
 
     const inflationResult = getInflationForPeriod(date1, date2);
     const adjustedAmount1 = amount1 * (1 + inflationResult.accumulatedInflation / 100);
-    const difference = adjustedAmount1 - amount2;
-    const percentageDifference = ((difference / amount2) * 100).toFixed(2);
+    const difference = ((amount2 - adjustedAmount1) / adjustedAmount1) * 100;
 
     document.getElementById('adjustedAmount').textContent = `$${adjustedAmount1.toFixed(2)}`;
-    document.getElementById('percentageDifference').textContent = `${percentageDifference}%`;
+    document.getElementById('percentageDifference').textContent = `${difference.toFixed(2)}%`;
 }
 
 function displayCompareError(message) {
@@ -250,7 +249,7 @@ window.addEventListener('load', () => {
             populateSelectOptions(); // Llamar aquí después de cargar los datos
             calculateInflation();
             compareValues();
-            return loadDollarData(); // Asegúrate de que esta función devuelva una promesa
+            return loadDollarData();
         })
         .then(() => {
             calculatePesoDollarEvolution();
