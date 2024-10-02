@@ -6,33 +6,35 @@
     <title>Calcular valor del peso argentino</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
 </head>
+
 <body>
     <header class="header">
         <nav class="navbar">
-            <div class="navbar__logo">Calcular valor del peso argentino</div>
+            <h1 class="navbar__logo">Calcular valor del peso argentino</h1>
             <button class="navbar__toggle" aria-label="Abrir menú">
                 <span class="navbar__toggle-icon"></span>
             </button>
             <ul class="navbar__menu">
                 <li class="navbar__item"><a href="#calculadora-inflacion" class="navbar__link">Calculadora de Inflación</a></li>
                 <li class="navbar__item"><a href="#comparar-precios" class="navbar__link">Comparar Precios</a></li>
-                <li class="navbar__item"><a href="#evolucion-peso-paralelo" class="navbar__link">Evolución Peso (Paralelo)</a></li>
-                <li class="navbar__item"><a href="#evolucion-peso-oficial" class="navbar__link">Evolución Peso (Oficial)</a></li>
-                <li class="navbar__item"><a href="#que-es-inflacion" class="navbar__link">¿Qué es la Inflación?</a></li>
+                <li class="navbar__item"><a href="#evolucion-peso-paralelo" class="navbar__link">Evolución Peso 
+                    (Dólar Paralelo)</a></li>
+                <li class="navbar__item"><a href="#evolucion-peso-oficial" class="navbar__link">Evolución Peso 
+                    (Dólar Oficial)</a></li>
+                <li class="navbar__item"><a href="#informacion-adicional" class="navbar__link">Información Adicional</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
         <section id="calculadora-inflacion" class="container__section">
-            <h1 class="section__title title--principal">Calculadora de inflación histórica de Argentina</h1>
+            <h2 class="section__title title--principal">Calculadora de inflación histórica de Argentina</h2>
             <p class="section__description">
                 La inflación afecta el valor del dinero a lo largo del tiempo, distorsionando los precios. 
                 Utiliza la calculadora a continuación para convertir precios entre cualquier mes desde enero de 1992 (cuando fue introducido el Peso) y el mes presente.
             </p>
-            <h2 class="section__title">Uso</h2>
+            <h3 class="section__title">Uso</h3>
             <ol class="section__list">
                 <li>Ingresar un valor inicial.</li>
                 <li>Ingresar fecha inicial (la inflación se toma al primer día del mes).</li>
@@ -91,7 +93,7 @@
                 Es importante saber si un precio aumenta más o menos que la inflación. Cuando el aumento supera la inflación, el poder adquisitivo disminuye; si es menor, aumenta.
                 Utiliza la herramienta a continuación para saber la diferencia en términos reales (ajustada por inflación) entre 2 valores de distintas fechas.
             </p>
-            <h2 class="section__title">Uso</h2>
+            <h3 class="section__title">Uso</h3>
             <ol class="section__list">
                 <li>Ingresa el primer valor a comparar.</li>
                 <li>ingresa la fecha a la que pertenece el primer valor (la inflación se toma al primer día del mes).</li>
@@ -150,7 +152,7 @@
             <p class="section__description"> El cambio de cotización del peso frente al dólar afecta la inflación, los precios de productos importados, el poder adquisitivo, las inversiones y el ahorro.
             Utiliza la herramienta a continuación para visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar paralelo (blue) a lo largo del tiempo.
             </p>
-            <h2 class="section__title">Uso</h2>
+            <h3 class="section__title">Uso</h3>
             <ol class="section__list">
                 <li>Ingresa un valor en pesos argentinos.</li>
                 <li>Ingresar fecha inicial (la cotización del dólar se toma al primer día del mes).</li>
@@ -202,7 +204,7 @@
             El cambio de cotización del peso frente al dólar afecta la inflación, los precios de productos importados, el poder adquisitivo, las inversiones y el ahorro.
             Utiliza la herramienta a continuación para visualizar cómo ha evolucionado el valor del peso argentino en relación al dólar oficial a lo largo del tiempo.
             </p>
-            <h2 class="section__title">Uso</h2>
+            <h3 class="section__title">Uso</h3>
             <ol class="section__list">
                 <li>Ingresa un valor en pesos argentinos.</li>
                 <li>Ingresar fecha inicial (la cotización del dólar se toma al primer día del mes).</li>
@@ -248,17 +250,50 @@
             </form>
         </section>
 
-        <section id="que-es-inflacion" class="container__section">
-            <h2 class="section__title">¿Qué es la Inflación?</h2>
+        <section id="informacion-adicional" class="container__section">
+            <h2 class="section__title">Información adicional</h2>
             <p class="section__description">
-                La inflación es el aumento generalizado y sostenido de los precios durante un determinado período de tiempo. Cuando los precios suben, la moneda en curso pierde valor y se adquieren menos bienes y servicios. Esto quiere decir que la inflación refleja la disminución del poder adquisitivo de la moneda.
+                Esta sección proporciona contexto y explicaciones sobre conceptos económicos clave relacionados con la inflación y el valor de la moneda. Aquí encontrarás definiciones, efectos y datos relevantes para comprender mejor los cálculos y comparaciones presentados en las herramientas anteriores.
+            </p>
+            
+            <h3 class="section__title">¿Qué es la Inflación?</h3>
+            <p class="section__description">
+                La inflación es un fenómeno económico que se refiere al aumento sostenido en los precios de los bienes y servicios en un país a lo largo del tiempo. Esto significa que el valor del dinero disminuye en términos de cuánto se puede adquirir con él. Es una medida de la velocidad a la que suben los precios en una economía, lo que refleja cambios en la oferta y demanda, así como en los costos de producción y distribución de productos y servicios.
+            </p>
+
+            <h3 class="section__title">¿Cómo se mide?</h3>
+            <p class="section__description">
+                La inflación se mide mediante el Índice de Precios al Consumidor (IPC), que refleja la variación en el costo de una canasta de bienes y servicios representativa del consumo de los hogares. En Argentina, el Instituto Nacional de Estadística y Censos (INDEC) publica mensualmente el IPC, calculando el porcentaje de aumento en los precios de esta canasta.
+            </p>
+
+            <h3 class="section__title">¿Qué significa que suba el dólar?</h3>
+            <p class="section__description">
+                Cuando el valor del dólar aumenta frente al peso argentino, significa que se necesitan más pesos para comprar la misma cantidad de dólares. Esto puede reflejar una pérdida de confianza en la moneda local o desequilibrios económicos, lo que puede impactar en los precios de productos importados y en la inflación general del país.
+            </p>
+
+            <h3 class="section__title">¿Por qué hay 2 tipos de dólar?</h3>
+            <p class="section__description">
+                En Argentina existen múltiples tipos de cambio debido a las regulaciones y restricciones cambiarias. Los dos más comunes son:
+            </p>
+            <ul class="section__list">
+                <li><strong>Dólar oficial:</strong> Es el valor regulado por el gobierno y utilizado para transacciones comerciales oficiales.</li>
+                <li><strong>Dólar blue:</strong> Es el tipo de cambio en el mercado informal, donde el dólar se compra y vende sin la intervención del Estado. Este surge debido a las limitaciones para acceder a divisas en el mercado oficial, lo que genera una mayor demanda en el mercado paralelo.</li>
+            </ul>
+
+            <h3 class="section__title">¿Cómo afecta la inflación y el precio del dólar?</h3>
+            <p class="section__description">
+                La inflación reduce el poder adquisitivo, lo que significa que cada vez se puede comprar menos con la misma cantidad de dinero. También genera incertidumbre económica y afecta principalmente a quienes tienen ingresos fijos o ahorros en pesos.
             </p>
             <p class="section__description">
-                Los efectos de la inflación pueden ser positivos y negativos. Los efectos negativos de la inflación incluyen la disminución del valor de la moneda y el desaliento del ahorro e inversión debido a la incertidumbre sobre el valor futuro del dinero. Los efectos positivos de la inflación incluyen la posibilidad de los bancos centrales de ajustar las tasas de interés nominal con el propósito de mitigar una recesión y de fomentar la inversión en proyectos de capital no monetarios.
+                Cuando el dólar sube, los productos importados se encarecen, lo que incrementa los costos para las empresas y presiona los precios al consumidor. Además, la suba del dólar puede influir en las expectativas de inflación, generando más demanda de dólares y mayor incertidumbre.
             </p>
+            <p class="section__description">
+                Entender la inflación y el precio del dólar es clave porque estos factores impactan directamente en el costo de vida, el poder adquisitivo y la estabilidad económica del país. Saber cómo funcionan ayuda a tomar decisiones más informadas en momentos de inestabilidad económica.
+            </p>
+
             <h3 class="section__title">Fuente de datos</h3>
             <p class="section__description">
-                La calculadora usa el índice de precios al consumidor (IPC) del INDEC y las cotizaciones históricas del dolar oficial y paralelo de <a href="http://dolarhistorico.com" target="_blank">dolarhistorico.com</a>.
+                Los datos utilizados en esta página provienen del índice de precios al consumidor (IPC) del INDEC y de las cotizaciones históricas del dólar oficial y paralelo obtenidas de <a href="http://dolarhistorico.com" target="_blank">dolarhistorico.com</a>.
             </p>
         </section>
     </main>
