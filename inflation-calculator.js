@@ -190,8 +190,8 @@ function compareValues() {
     }
 
     // Verificar si el primer monto es negativo
-    if (amount1 < 0) {
-        displayCompareError('El primer valor no puede ser negativo.');
+    if (amount1 <= 0) {
+        displayCompareError('El primer valor debe ser mayor que 0.');
         return;
     }
 
