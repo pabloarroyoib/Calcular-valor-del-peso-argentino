@@ -391,6 +391,8 @@
     {"year": 2024, "month": 5, "inflation": 4.2314},
     {"year": 2024, "month": 6, "inflation": 4.577},
     {"year": 2024, "month": 7, "inflation": 4.031},
-    {"year": 2024, "month": 8, "inflation": 4.172}
+    {"year": 2024, "month": 8, "inflation": 4.172},
+    {"year": 2024, "month": 9, "inflation": 3.5},
+    {"year": 2024, "month": 10, "inflation": 2.7}
   ]
 }
