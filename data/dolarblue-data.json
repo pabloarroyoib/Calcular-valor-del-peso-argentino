@@ -164,5 +164,18 @@
   {"year":2024,"month":7,"valor":1405},
   {"year":2024,"month":8,"valor":1380},
   {"year":2024,"month":9,"valor":1305},
-  {"year":2024,"month":10,"valor":1220}
+  {"year":2024,"month":10,"valor":1220},
+  {"year":2024,"month":11,"valor":1190},
+  {"year":2024,"month":12,"valor":1120},
+  {"year":2025,"month":1,"valor":1210},
+  {"year":2025,"month":2,"valor":1225},
+  {"year":2025,"month":3,"valor":1230},
+  {"year":2025,"month":4,"valor":1325},
+  {"year":2025,"month":5,"valor":1205},
+  {"year":2025,"month":6,"valor":1165},
+  {"year":2025,"month":7,"valor":1225},
+  {"year":2025,"month":8,"valor":1335},
+  {"year":2025,"month":9,"valor":1355},
+  {"year":2025,"month":10,"valor":1475},
+  {"year":2025,"month":11,"valor":1445}
 ]
