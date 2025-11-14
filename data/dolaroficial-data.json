@@ -165,5 +165,17 @@
     {"year":2024,"month":8,"valor":971.01},
     {"year":2024,"month":9,"valor":991.42},
     {"year":2024,"month":10,"valor":1005.86},
-    {"year":2024,"month":11,"valor":1028.99}	
+    {"year":2024,"month":11,"valor":1020.75},
+    {"year":2024,"month":12,"valor":1041.73},
+    {"year":2025,"month":1,"valor":1061.83},
+    {"year":2025,"month":2,"valor":1080.65},
+    {"year":2025,"month":3,"valor":1093.80},
+    {"year":2025,"month":4,"valor":1104.03},
+    {"year":2025,"month":5,"valor":1216.47},
+    {"year":2025,"month":6,"valor":1199.85},
+    {"year":2025,"month":7,"valor":1237.18},
+    {"year":2025,"month":8,"valor":1375.79},
+    {"year":2025,"month":9,"valor":1391.88},
+    {"year":2025,"month":10,"valor":1456.89},
+    {"year":2025,"month":11,"valor":1487.39}
 ]
